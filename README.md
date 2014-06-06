@@ -9,7 +9,6 @@ A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digest
 + POS tagger
 + Dependency parser
 + Corpus readers for [Hamshahri](http://ece.ut.ac.ir/dbrg/hamshahri/) and [Bijankhan](http://ece.ut.ac.ir/dbrg/bijankhan/)
-+ [![Build Status](https://travis-ci.org/sobhe/hazm.png)](https://travis-ci.org/sobhe/hazm)
 
 
 ## Requirements
