@@ -93,7 +93,7 @@ namespace NHazm
                     (this.tokenizer.AfterVerbs.Contains(beforeTaggedWord.word()) &&
                      this.tokenizer.Verbs.Contains(taggedWord.word())))
                 {
-                    beforeTaggedWord.setWord(taggedWord.word() + " " + taggedWord.word());
+                    beforeTaggedWord.setWord(taggedWord.word() + " " + beforeTaggedWord.word());
                     if (result.Count == 0)
                         result.Add(beforeTaggedWord);
                 }
