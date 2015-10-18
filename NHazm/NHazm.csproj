@@ -153,6 +153,7 @@
     <Content Include="Corpora\persica.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Corpora\hamshahri\1996\hamshahri.dtd" />
     <None Include="Data\posMaps.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
