@@ -8,7 +8,11 @@ A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digest
 + Word lemmatizer
 + POS tagger
 + Dependency parser
-+ Corpus readers for [Hamshahri](http://ece.ut.ac.ir/dbrg/hamshahri/) and [Bijankhan](http://ece.ut.ac.ir/dbrg/bijankhan/)
++ Corpus readers for:
+   * [Hamshahri](http://ece.ut.ac.ir/dbrg/hamshahri/)
+   * [Bijankhan](http://ece.ut.ac.ir/dbrg/bijankhan/)
+   * [Persica](https://sourceforge.net/projects/persica/)
+   * [Verb Valency](http://dadegan.ir/catalog/pervallex)
 
 
 ## Requirements
@@ -18,4 +22,4 @@ A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digest
 * [MaltParser for .NET](http://sergey-tihon.github.io/MaltParser.NET/) can be installed from NuGet: 
 > Install-Package MaltParser
 
-* You can download [pre-trained tagger and parser models](http://dl.dropboxusercontent.com/u/90405495/resources.zip) for persian and put these models in the `resources` folder of your project.
+* You can download  [pre-trained tagger](http://dl.dropboxusercontent.com/u/90405495/resources-extra.zip) and [parser models](http://dl.dropboxusercontent.com/u/90405495/resources-extra.zip) for persian and put these models in the `Resources` folder of your project.

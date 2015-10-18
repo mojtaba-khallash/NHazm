@@ -8,11 +8,26 @@ namespace NHazm
 {
     public class Lemmatizer
     {
+        //
+        // Fields
+        //
+
+        #region Fields
         private Hashtable _verbs;
         private HashSet<string> _words;
+        #endregion
 
-        public Lemmatizer() : this("data/words.dat", "data/verbs.dat", true) { }
-        public Lemmatizer(bool joinedVerbParts) : this("data/words.dat", "data/verbs.dat", joinedVerbParts) { }
+
+
+
+
+        //
+        // Constructors
+        //
+
+        #region Constructors
+        public Lemmatizer() : this("Data/words.dat", "Data/verbs.dat", true) { }
+        public Lemmatizer(bool joinedVerbParts) : this("Data/words.dat", "Data/verbs.dat", joinedVerbParts) { }
         public Lemmatizer(string wordsFile, string verbsFile) : this(wordsFile, verbsFile, true) { }
         public Lemmatizer(string wordsFile, string verbsFile, bool joinedVerbParts)
         {
@@ -41,18 +56,27 @@ namespace NHazm
             {
                 pureVerbs.ForEach(verb =>
                 {
-                    string[] parts = verb.Split('#');
+                    var bon = verb.Split('#')[0];
                     tokenizer.AfterVerbs.ToList().ForEach(afterVerb =>
                     {
-                        this._verbs.Add(parts[0] + "ه " + afterVerb, verb);
+                        this._verbs.Add(bon + "ه " + afterVerb, verb);
+                        this._verbs.Add("ن" + bon + "ه " + afterVerb, verb);
                     });
                     tokenizer.BeforeVerbs.ToList().ForEach(beforeVerb =>
                     {
-                        this._verbs.Add(beforeVerb + " " + parts[0], verb);
+                        this._verbs.Add(beforeVerb + " " + bon, verb);
                     });
                 });
             }
         }
+        #endregion
+
+
+
+
+        //
+        // API
+        //
 
         public string Lemmatize(string word)
         {
@@ -60,11 +84,20 @@ namespace NHazm
         }
         public string Lemmatize(string word, string pos)
         {
+            if (pos.Length == 0 && this._words.Contains(word))
+                return word;
+
             if ((pos.Length == 0 || pos.Equals("V")) && this._verbs.ContainsKey(word))
                 return this._verbs[word].ToString();
 
-            if (this._words.Contains(word))
+            if (pos.StartsWith("AJ") && word[word.Length - 1] == 'ی')
                 return word;
+
+            if (pos.Equals("PRO"))
+			    return word;
+
+            if (this._words.Contains(word))
+			    return word;
 
             var stem = new Stemmer().Stem(word);
             if (this._words.Contains(stem))
@@ -164,14 +197,30 @@ namespace NHazm
             return conjugates.ToList();
         }
 
+
+
+
+        //
+        // Helper Methods
+        //
+
+        #region GetRefinement(text)
+        /// <summary>
+        /// Apply aa refinement
+        /// </summary>
+        /// <param name="text">input text</param>
+        /// <returns>refined text</returns>
         private string GetRefinement(string text)
         {
             return text.Replace("بآ", "بیا").Replace("نآ", "نیا");
         }
+        #endregion
 
+        #region GetNot(text)
         private string GetNot(string text)
         {
             return "ن" + text;
         }
+        #endregion
     }
 }

@@ -79,7 +79,7 @@ namespace NHazm
         }
 
         public DependencyParser()
-            : this(null, null, "resources/langModel.mco")
+            : this(null, null, "Resources/langModel.mco")
         { }
 
         public DependencyParser(POSTagger tagger, Lemmatizer lemmatizer, string modelFile)

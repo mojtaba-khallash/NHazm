@@ -10,7 +10,7 @@ namespace NHazm
         private MaxentTagger _tagger;
 
         public POSTagger()
-            : this("resources/persian.tagger")
+            : this("Resources/persian.tagger")
         { }
 
         public POSTagger(string pathToModel)

@@ -146,13 +146,17 @@
   <ItemGroup>
     <Compile Include="NormalizerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SentenceTokenizerTests.cs" />
+    <Compile Include="Reader\HamshahriReaderTest.cs" />
+    <Compile Include="Reader\PersicaReaderTest.cs" />
+    <Compile Include="Reader\VerbValencyReaderTest.cs" />
+    <Compile Include="Tokenizer\SentenceTokenizerTests.cs" />
     <Compile Include="StemmerTests.cs" />
     <Compile Include="LemmatizerTest.cs" />
     <Compile Include="POSTaggerTest.cs" />
-    <Compile Include="BijankhanReaderTest.cs" />
+    <Compile Include="Reader\BijankhanReaderTest.cs" />
     <Compile Include="DependencyParserTest.cs" />
-    <Compile Include="WordTokenizerTest.cs" />
+    <Compile Include="Reader\PeykareReaderTest.cs" />
+    <Compile Include="Tokenizer\WordTokenizerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NHazm\NHazm.csproj">

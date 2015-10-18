@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NHazm.Test
@@ -11,32 +12,29 @@ namespace NHazm.Test
         {
             Lemmatizer lemmatizer = new Lemmatizer();
 
-            string input, expected, actual;
+            string input, expected, actual, p;
 
-            input = "کتاب‌ها";
-            expected = "کتاب";
-            actual = lemmatizer.Lemmatize(input);
-            Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
+            List<string> inputs = new List<string>() {
+                "کتاب‌ها", "آتشفشان", "می‌روم", "گفته شده است", "نچشیده است", "مردم", "اجتماعی"
+            };
+            List<string> expecteds = new List<string>() {
+                "کتاب", "آتشفشان", "رفت#رو", "گفت#گو", "چشید#چش", "مردم", "اجتماعی"
+            };
+            List<string> pos = new List<string>() {
+                null, null, null, null, null, "N", "AJ"
+            };
 
-            input = "آتشفشان";
-            expected = "آتشفشان";
-            actual = lemmatizer.Lemmatize(input);
-            Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
-
-            input = "می‌روم";
-            expected = "رفت#رو";
-            actual = lemmatizer.Lemmatize(input);
-            Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
-
-            input = "گفته شده است";
-            expected = "گفت#گو";
-            actual = lemmatizer.Lemmatize(input);
-            Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
-
-            input = "مردم";
-            expected = "مردم";
-            actual = lemmatizer.Lemmatize(input, "N");
-            Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
+            for (var i = 0; i < inputs.Count; i++)
+            {
+                input = inputs[i];
+                expected = expecteds[i];
+                p = pos[i]; 
+                if (p == null)
+                    actual = lemmatizer.Lemmatize(input);
+                else
+                    actual = lemmatizer.Lemmatize(input, p);
+                Assert.AreEqual(expected, actual, "Failed to lematize of '" + input + "' word");
+            }
         }
 
         [TestMethod]
