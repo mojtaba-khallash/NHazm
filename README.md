@@ -1,5 +1,6 @@
 NHazm
 =====
+[![Build status](https://ci.appveyor.com/api/projects/status/el9vqyfy45vxsu1w?svg=true)](https://ci.appveyor.com/project/mojtaba-khallash/nhazm)
 
 A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digesting Persian text)
 
