@@ -38,13 +38,37 @@ namespace NHazm
 
         public IEnumerable<Document> GetDocuments()
         {
+            return GetDocuments(null, null);
+        }
+
+        public IEnumerable<Document> GetDocuments(DateTime date)
+        {
+            return GetDocuments(date, date);
+        }
+
+        public IEnumerable<Document> GetDocuments(DateTime? start, DateTime? end)
+        {
+            bool hasFilter = start != null || end != null;
+
+            int startYear = start != null ? start.Value.Year : -1;
+            int endYear = end != null ? end.Value.Year : -1;
+
+            int startTime = start != null ? (start.Value.Year*10000+ start.Value.Month*100+ start.Value.Day) : -1;
+            int endTime = end != null ? (end.Value.Year * 10000 + end.Value.Month * 100 + end.Value.Day) : -1;
+
             DirectoryInfo dir = new DirectoryInfo(_rootFolder);
             foreach (var folder in dir.GetDirectories())
             {
+                if (hasFilter && !IsInRange(startYear, endYear, folder.Name))
+                    continue;
+
                 foreach (var file in folder.GetFiles())
                 {
                     if (!this.invalidFiles.Contains(file.Name))
                     {
+                        if (hasFilter && !IsInRange(startTime, endTime, folder.Name.Substring(0, 2) + file.Name.Substring(5, 6)))
+                            continue;
+
                         XmlDocument xDoc = new XmlDocument();
                         try
                         {
@@ -81,6 +105,23 @@ namespace NHazm
                     }
                 }
             }
+        }
+
+        private bool IsInRange(int start, int end, string value)
+        {
+            int time = -1;
+            int.TryParse(value, out time);
+            if (time > 0)
+            {
+                if (start > 0 && end > 0)
+                    return (start <= time && time <= end);
+                else if (start > 0)
+                    return start == time;
+                else if (end > 0)
+                    return end == time;
+            }
+
+            return false;
         }
     }
 
