@@ -23,4 +23,4 @@ A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digest
 * [MaltParser for .NET](http://sergey-tihon.github.io/MaltParser.NET/) can be installed from NuGet: 
 > Install-Package MaltParser
 
-* You can download  [pre-trained tagger](http://dl.dropboxusercontent.com/u/90405495/resources-extra.zip) and [parser models](http://dl.dropboxusercontent.com/u/90405495/resources-extra.zip) for persian and put these models in the `Resources` folder of your project.
+* You can download  [pre-trained tagger](http://dl.dropboxusercontent.com/u/90405495/resources.zip) and [parser models](http://dl.dropboxusercontent.com/u/90405495/resources-extra.zip) for persian and put these models in the `Resources` folder of your project.
