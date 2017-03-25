@@ -1,8 +1,0 @@
-before_build:
-  - nuget restore
-build:
-  project: NHazm.sln 
-  verbosity: minimal
-after_test: 
-    - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe" -targetargs:".\NHazm.Test\bin\Debug\NHazm.Test.dll" -filter:"+[NHazm]*  -[NHazm]NHazm.Properties.*" -excludebyattribute:*.ExcludeFromCodeCoverage* -hideskipped:All -output:.\NHazm_coverage.xml
-    - CodecovUploader.sh -f "NHazm_coverage.xml -t 488e807d-252b-49b2-80ad-8c8ccf7b9ea3 -X gcov
