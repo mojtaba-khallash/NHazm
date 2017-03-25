@@ -1,6 +1,8 @@
 NHazm
 =====
-[![Build status](https://ci.appveyor.com/api/projects/status/el9vqyfy45vxsu1w?svg=true)](https://ci.appveyor.com/project/mojtaba-khallash/nhazm) [![License](http://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
+[![Build status](https://ci.appveyor.com/api/projects/status/el9vqyfy45vxsu1w?svg=true)](https://ci.appveyor.com/project/mojtaba-khallash/nhazm)
+[![codecov](https://codecov.io/gh/mojtaba-khallash/NHazm/branch/master/graph/badge.svg)](https://codecov.io/gh/mojtaba-khallash/NHazm)
+ [![License](http://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
 
 A C# version of [Hazm](https://github.com/sobhe/hazm) (Python library for digesting Persian text)
 
